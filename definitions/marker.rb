@@ -31,7 +31,7 @@ define :marker, :template => "default.erb", :cookbook => "marker", :variables =>
     block do
 
       # add recipes to values hash
-      recipe_name = "#{self.cookbook_name}" + "::" + "#{self.recipe_name}"
+      recipe_name = "#{self.cookbook_name}::#{self.recipe_name}"
       values = { :recipe_name => recipe_name }
       values.merge(params[:variables]) if params[:variables]
 

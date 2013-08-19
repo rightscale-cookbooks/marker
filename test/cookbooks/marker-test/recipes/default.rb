@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: marker
-# Recipe:: test
+# Cookbook Name:: marker-test
+# Recipe:: default
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 

@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "marker-berkshelf"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "RightImage_Ubuntu_12.04_x64"
+  config.vm.box = "RightImage_Ubuntu_12.04_x64_v13.5.0.1"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -81,7 +81,7 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = [
         "recipe[marker::default]",
-        "recipe[marker::test]"
+        "recipe[marker-test::default]"
     ]
   end
 end
