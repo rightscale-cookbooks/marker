@@ -1,4 +1,4 @@
-# test/cookbooks/marker-test cookbook
+# marker-test cookbook
 
 # Requirements
 
