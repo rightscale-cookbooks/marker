@@ -21,5 +21,10 @@ marker "recipe_start_default"
 
 marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
-  cookbook "marker"
+end
+
+marker "recipe_start_custom" do
+  template "custom.erb"
+  cookbook "marker-test"
+  variables :host_name => node[:hostname]
 end

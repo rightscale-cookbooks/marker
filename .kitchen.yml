@@ -16,5 +16,5 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[marker]", "recipe[marker-test]"]
+  run_list: ["recipe[marker-test]"]
   attributes: {}
