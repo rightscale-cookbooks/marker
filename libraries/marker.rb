@@ -48,7 +48,7 @@ class Chef
           :templates,
           template
         )
-        # render template
+        # Render template
         context = {}
         context.merge!(variables)
         context[:node] = @node
@@ -60,7 +60,7 @@ class Chef
           raise TemplateError.new(e, template, context)
         end
 
-        # create log entry for each line in evaluated template
+        # Create log entry for each line in evaluated template
         marker_contents.split("\n").each do |line|
           Chef::Log.info(line)
         end
