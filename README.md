@@ -38,7 +38,6 @@ You can use the `marker` to distinguish recipes in RightScale Audit Entires:
 ```ruby
 marker "recipe_start_rightscale" do
   template "rightscale_audit_entry.erb"
-  cookbook "marker"
 end
 ```
 
@@ -50,15 +49,39 @@ in the RightScale Audit Entry for your Chef run:
 *RS>  Running recipe hello_world::default   ****
 ```
 
+## Custom Templates
+
+You can also use the `marker` with your own custom templates and even add your own variables:
+
+```ruby
+marker "recipe_start_custom" do
+  template "custom.erb"
+  cookbook "hello_world"
+  variables :host_name => node[:hostname]
+end
+```
+
+The template that you include in your cookbook could look like:
+
+```erb
+********************************************************************************
+*  Running recipe <%= @recipe_name %> on <%= @host_name %>
+```
+
+This will log in your custom format:
+
+```
+********************************************************************************
+*  Running recipe hello_world::default on localhost
+```
+
 # Attributes
 
 There are no attributes in this cookbook.
 
 # Recipes
 
-## default
-
-The default recipe in this cookbook does not do anything at this time.
+There are no recipes in this cookbook.
 
 # Author
 
