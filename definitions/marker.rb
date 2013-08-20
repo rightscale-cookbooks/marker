@@ -1,5 +1,6 @@
 #
 # Cookbook Name:: marker
+# Definition:: marker
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -32,7 +33,7 @@ define :marker, :template => "default.erb", :cookbook => "marker", :variables =>
 
       # add recipes to values hash
       recipe_name = "#{self.cookbook_name}::#{self.recipe_name}"
-      values = { :recipe_name => recipe_name }
+      values = {:recipe_name => recipe_name}
       values.merge(params[:variables]) if params[:variables]
 
       # create log marker from template
