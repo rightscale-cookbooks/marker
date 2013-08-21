@@ -1,9 +1,8 @@
 # marker cookbook
 
-Provides a way to create a visual marker in your Chef log by logging a template
-to the Chef log.
+Provides a way to create a visual marker in the Chef log based on a template.
 
-It uses a definition here because it runs in the context of the recipe where the
+It uses a definition because it runs in the context of the recipe where the
 cookbook and recipe name are available.
 
 # Requirements
@@ -33,7 +32,8 @@ Now, when your recipe is converging it will log:
 
 ## RightScale Audit Entry
 
-You can use the `marker` to distinguish recipes in RightScale Audit Entires:
+This cookbook comes with a `rightscale_audit_entry.erb` template that can be
+used to delineate recipes in the Audit Entires UI on the RightScale Dashboard:
 
 ```ruby
 marker "recipe_start_rightscale" do
