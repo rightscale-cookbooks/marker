@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: marker
+# Cookbook Name:: marker-test
 # Recipe:: default
 #
 # Copyright (C) 2013 RightScale, Inc.
@@ -16,3 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+marker "recipe_start_default"
+
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
+
+marker "recipe_start_custom" do
+  template "custom.erb"
+  cookbook "marker-test"
+  variables :host_name => node[:hostname]
+end

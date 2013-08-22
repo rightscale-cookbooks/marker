@@ -1,5 +1,6 @@
 #
 # Cookbook Name:: marker
+# Library:: marker
 #
 # Copyright (C) 2013 RightScale, Inc.
 # 
@@ -18,19 +19,28 @@
 
 require 'chef/mixin/template'
 require 'erb'
-require 'ostruct'
 
 class Chef
   class Log
     class Marker
       include Chef::Mixin::Template
 
+      # Constructs a log marker for a Chef run context.
+      #
+      # @param run_context [Chef::RunContext] the Chef run context
+      #
       def initialize(run_context)
         @run_context = run_context
         @node = @run_context.node
       end
 
-      def create(template, variables, cookbook)
+      # Creates a log entry from a given template.
+      #
+      # @param template [String] the template to use for the marker
+      # @param cookbook [String] the cookbook that contains the marker template
+      # @param variables [Hash<Symbol, String>] the extra variables to pass into the template
+      #
+      def create(template, cookbook, variables)
         # Find template from cookbook collection
         cookbook = @run_context.cookbook_collection[cookbook]
         template = cookbook.preferred_filename_on_disk_location(
@@ -38,7 +48,7 @@ class Chef
           :templates,
           template
         )
-        # render template
+        # Render template
         context = {}
         context.merge!(variables)
         context[:node] = @node
@@ -50,7 +60,7 @@ class Chef
           raise TemplateError.new(e, template, context)
         end
 
-        # create log entry for each line in evaluated template
+        # Create log entry for each line in evaluated template
         marker_contents.split("\n").each do |line|
           Chef::Log.info(line)
         end
