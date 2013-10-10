@@ -1,5 +1,7 @@
 # marker cookbook
 
+[![Build Status](https://travis-ci.org/rightscale-cookbooks/marker.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/marker)
+
 Provides a way to create a visual marker in the Chef log based on a template.
 
 It uses a definition because it runs in the context of the recipe where the
