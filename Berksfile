@@ -2,4 +2,4 @@ site :opscode
 
 metadata
 
-cookbook 'marker-test', path: './test/cookbooks/marker-test', group: :integration
+cookbook 'fake', path: './test/cookbooks/fake', group: :integration
