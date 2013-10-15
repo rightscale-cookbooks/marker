@@ -1,4 +1,4 @@
-name             'marker-test'
+name             'fake'
 maintainer       'RightScale, Inc.'
 maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'

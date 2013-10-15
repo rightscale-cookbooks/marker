@@ -1,4 +1,4 @@
-# marker-test cookbook
+# fake cookbook
 
 # Requirements
 

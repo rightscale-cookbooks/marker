@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
     }
 
     chef.run_list = [
-        "recipe[marker-test::default]"
+        "recipe[fake::default]"
     ]
   end
 end
