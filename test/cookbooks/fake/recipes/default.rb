@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: marker-test
+# Cookbook Name:: fake
 # Recipe:: default
 #
 # Copyright (C) 2013 RightScale, Inc.
@@ -25,6 +25,6 @@ end
 
 marker "recipe_start_custom" do
   template "custom.erb"
-  cookbook "marker-test"
+  cookbook "fake"
   variables :host_name => node[:hostname]
 end
