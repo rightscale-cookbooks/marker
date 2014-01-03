@@ -1,8 +1,8 @@
 ---
 driver_plugin: vagrant
-driver_config:
-  require_chef_omnibus: true
-  log_file: /var/log/chef-solo.log
+
+provisioner:
+  name: chef_solo
 
 platforms:
 - name: rightimage-ubuntu-12.04
@@ -34,3 +34,6 @@ suites:
 - name: default
   run_list: ["recipe[fake]"]
   attributes: {}
+  provisioner:
+    solo_rb:
+      log_location: /var/log/chef-solo.log
