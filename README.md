@@ -11,7 +11,7 @@ Github Repository: [https://github.com/rightscale-cookbooks/marker](https://gith
 
 # Requirements
 
-* Requires Chef 10 or higher
+* Requires Chef 11 or higher
 
 # Usage
 
