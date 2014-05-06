@@ -7,9 +7,11 @@ Provides a way to create a visual marker in the Chef log based on a template.
 It uses a definition because it runs in the context of the recipe where the
 cookbook and recipe name are available.
 
+Github Repository: [https://github.com/rightscale-cookbooks/marker](https://github.com/rightscale-cookbooks/marker)
+
 # Requirements
 
-Requires Chef 10 or higher.
+* Requires Chef 11 or higher
 
 # Usage
 
