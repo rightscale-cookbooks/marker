@@ -1,6 +1,12 @@
 # marker cookbook
 
-[![Build Status](https://travis-ci.org/rightscale-cookbooks/marker.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/marker)
+[![Cookbook](https://img.shields.io/cookbook/v/marker.svg?style=flat)][cookbook]
+[![Release](https://img.shields.io/github/release/rightscale-cookbooks/marker.svg?style=flat)][release]
+[![Build Status](https://img.shields.io/travis/rightscale-cookbooks/marker.svg?style=flat)][travis]
+
+[cookbook]: https://supermarket.getchef.com/cookbooks/marker
+[release]: https://github.com/rightscale-cookbooks/marker/releases/latest
+[travis]: https://travis-ci.org/rightscale-cookbooks/marker
 
 Provides a way to create a visual marker in the Chef log based on a template.
 
