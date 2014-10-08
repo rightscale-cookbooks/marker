@@ -5,30 +5,21 @@ provisioner:
   name: chef_solo
 
 platforms:
-- name: rightimage-ubuntu-12.04
-  driver_config:
-    box: RightImage_Ubuntu_12.04_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/ubuntu/12.04/RightImage_Ubuntu_12.04_x64_v13.5.0.1.box
-- name: rightimage-centos-6.4
-  driver_config:
-    box: RightImage_CentOS_6.4_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/centos/6.4/RightImage_CentOS_6.4_x64_v13.5.0.1.box
-- name: ubuntu-12.04
-  driver_config:
-    box: opscode-ubuntu-12.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
-- name: ubuntu-10.04
-  driver_config:
-    box: opscode-ubuntu-10.04
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-10.04_provisionerless.box
-- name: centos-6.4
-  driver_config:
-    box: opscode-centos-6.4
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box
 - name: centos-5.9
   driver_config:
     box: opscode-centos-5.9
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-5.9_provisionerless.box
+- name: centos-6.5
+  driver_config:
+    box: opscode-centos-6.5
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+- name: ubuntu-14.04
+  driver_config:
+    box: opscode-ubuntu-14.04
 
 suites:
 - name: default
