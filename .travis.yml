@@ -4,7 +4,5 @@ rvm:
   - 1.9.3
 script: bundle exec strainer test --except kitchen
 notifications:
-  irc:
-    channels: ["chat.freenode.net#rightscale"]
-    use_notice: true
-    skip_join: true
+  slack:
+    secure: U9HAOS2P8VASNJ0af5XG2Ew2fEdcGnB64h4J8DYT0JpVzdNtVTOwnZjTLRq4RqyRmkjGd9ZzWeMyLqFgUBccW7bS1FjbQcqlOBBfV0ZyrpqXJzbU2QGTfB0dS2Wa/QTZKXGMDPW93YCjB5ZXEnjW5k9x73eOEQK9eWEOlVhZ/4o=
