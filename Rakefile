@@ -2,7 +2,6 @@ require 'rspec/core/rake_task'
 require 'foodcritic'
 require 'kitchen'
 
-# cookbook = File.foreach('metadata.rb').grep(/^name/).first.strip.split(' ').last.delete("'")
 directory = File.expand_path(File.dirname(__FILE__))
 
 desc 'Sets up knife, and vendors cookbooks'
@@ -11,22 +10,64 @@ task :setup_test_environment do
     file.write <<-EOF
       log_level                :debug
       log_location             STDOUT
-      cookbook_path            ['.', 'berks-cookbooks/']
+      cookbook_path            ['.', 'berks-cookbooks/' ]
     EOF
   end
   sh('berks vendor')
 end
 
+desc 'verifies version and changelog'
+task :verify_version do
+  def old_version?
+    f = `git show master:metadata.rb`
+    f.each_line do |line|
+      if line =~ /^version/
+        _k, v = line.strip.split
+        @old_version = v
+      end
+    end
+    @old_version
+  end
+
+  def new_version?
+    f = File.read('metadata.rb')
+    f.each_line do |line|
+      if line =~ /^version/
+        _k, v = line.strip.split
+        @new_version = v
+      end
+    end
+    @new_version
+  end
+
+  if `git rev-parse --abbrev-ref HEAD`.strip != ('master' && 'HEAD')
+    old_version = old_version?.tr('\'', '')
+    new_version = new_version?.tr('\'', '')
+    puts "Verifying Metdata Version - Old:#{old_version}, New:#{new_version}"
+    if old_version == new_version
+      raise 'You need to increment version before test will pass'
+    end
+
+    puts "Verifying Changelog Contains Version #{new_version}"
+    counter = 0
+    f = File.read('CHANGELOG.md')
+    f.each_line do |line|
+      counter += 1 if line.match new_version
+    end
+    raise 'CHANGELOG update needed' if counter == 0
+  end
+end
+
 desc 'runs cookstyle'
 task cookstyle: [:setup_test_environment] do
-  cmd = 'bundle exec cookstyle -D --format offenses --display-cop-names'
+  cmd = 'chef exec cookstyle -D --format offenses --display-cop-names'
   puts cmd
   sh(cmd)
 end
 
 desc 'runs foodcritic'
 task :foodcritic do
-  cmd = "bundle exec foodcritic --epic-fail any -t ~FC015 #{directory}"
+  cmd = "chef exec foodcritic --epic-fail any -t ~FC015 #{directory}"
   puts cmd
   sh(cmd)
 end
@@ -42,7 +83,7 @@ end
 
 desc 'runs rspec'
 task :rspec do
-  cmd = 'bundle exec rspec --color --format documentation'
+  cmd = 'chef exec rspec --color --format documentation'
   puts cmd
   sh(cmd)
 end
@@ -54,8 +95,15 @@ task :kitchen do
   sh(cmd)
 end
 
+desc 'clean up test files'
+task :clean do
+  cmd = 'rm -fr berks-cookbooks knife.rb'
+  puts cmd
+  sh(cmd)
+end
+
 desc 'runs all tests except kitchen'
-task except_kitchen: [:cookstyle, :foodcritic, :rspec] do
+task except_kitchen: [:verify_version, :cookstyle, :foodcritic, :rspec] do
   puts 'running all tests except kitchen'
 end
 
