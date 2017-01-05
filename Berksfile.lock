@@ -1,0 +1,11 @@
+DEPENDENCIES
+  fake
+    path: test/cookbooks/fake
+  marker
+    path: .
+    metadata: true
+
+GRAPH
+  fake (0.1.0)
+    marker (>= 0.0.0)
+  marker (2.0.0)
