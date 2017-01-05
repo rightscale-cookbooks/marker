@@ -1,0 +1,4 @@
+AllCops:
+  Exclude:
+    - 'berks-cookbooks/**/*'
+    - 'knife.rb'

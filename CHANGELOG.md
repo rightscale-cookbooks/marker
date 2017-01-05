@@ -3,6 +3,11 @@ marker Cookbook CHANGELOG
 
 This file is used to list changes made in each version of the marker cookbook.
 
+v2.0.0
+------
+
+- Chef 12 update
+
 v1.0.1
 ------
 
