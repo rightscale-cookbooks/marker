@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 5.2'
+gem 'berkshelf', '= 5.2.0'
+gem 'berkshelf-api-client', '~> 2.0', '>= 2.0.2'
 gem 'thor-foodcritic'
-gem 'rake'
+gem 'rake', '~> 12.3', '>= 12.3.2'
 gem 'chef', '~> 12.16.0'
+gem 'public_suffix', '~> 3.1', '>= 3.1.1'
+gem 'nio4r', '~> 2.3', '>= 2.3.1'
 
 group :integration do
   gem 'travis-lint'
@@ -13,6 +16,6 @@ group :integration do
   gem 'coveralls', require: false
   gem 'machine_tag'
   gem 'chef-rewind'
-  gem 'cookstyle'
-  gem 'rubocop', '~> 0.39.0'
+  gem 'cookstyle', '~> 3.0', '>= 3.0.2'
+  gem 'rubocop', '~> 0.55.0'
 end
